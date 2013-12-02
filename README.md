@@ -18,6 +18,7 @@ The installation is simple:
 - Drop your squad.xml file in the main directory, make sure it's named squad.xml! This is important!
 - Drop your squad logo in the main directory, having the name you configured in the config.php
 - Drop the squad logo image that will show in game(The logo.paa / logo.tga or logo.jpg file) in the main directory
+- Remove inc/password_generator.php unless you need it's functionality for the time being
 
 More instructions can be found here: http://community.bistudio.com/wiki/squad.xml 
 
