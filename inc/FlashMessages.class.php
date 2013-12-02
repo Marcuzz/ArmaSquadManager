@@ -1,9 +1,9 @@
 <?php
 ////////////////////////////////////////////////////////////////////////////////////
-//                                                                                //
-//						   		Code made by Snazy                                //
-//	   Feel free to modify, but remember to credit me as the original author!     //                                                                        
-//                                                                                //
+//                                                                                
+// Code made by Snazy,                             
+// Feel free to modify, but remember to credit me as the original author!                                                                    
+//                                                                                
 ////////////////////////////////////////////////////////////////////////////////////
 
 class FlashMessages {

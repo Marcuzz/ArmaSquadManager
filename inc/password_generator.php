@@ -1,10 +1,9 @@
 <?php
 ////////////////////////////////////////////////////////////////////////////////////
-//                                                                                //
-//						   		Code made by Marcuz                               //
-//	   Feel free to modify, but remember to credit me as the original author!     //
-//                        (Do not remove orignal credits)                         //                                                                           
-//                                                                                //
+//                                                                                
+// Code made by Marcuz,                             
+// Feel free to modify, but remember to credit me as the original author!                                                                    
+//                                                                                
 ////////////////////////////////////////////////////////////////////////////////////
 
 // This file is included for existing users withing the squad.xml who did not use this panel when registering to the squad url

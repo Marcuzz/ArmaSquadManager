@@ -1,9 +1,9 @@
 <?php
 ////////////////////////////////////////////////////////////////////////////////////
-//                                                                                //
-//						   		Code made by Marcuz                               //
-//	   Feel free to modify, but remember to credit me as the original author!     //                                                               
-//                                                                                //
+//                                                                                
+// Code made by Marcuz,                             
+// Feel free to modify, but remember to credit me as the original author!                                                                    
+//                                                                                
 ////////////////////////////////////////////////////////////////////////////////////
 
 // This file might be messy and unexplainable, pending cleanup but hey, it works?
