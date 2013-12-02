@@ -1,0 +1,160 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+a {
+	text-decoration: none;
+	color: green;
+}
+
+a:hover {
+	text-decoration: none;
+	color: green;
+}
+
+a:visited {
+	text-decoration: none;
+	color: green;
+}
+
+.custom-body {
+	background-color: #1d1d1d;
+	color: #a8a8a8;
+}
+
+.logo_bg{
+	width: 360px;
+	height: 200px;
+	background-color: #050505;
+	margin-left: -30px;
+}
+
+.logo {
+	width: 200px;
+	margin-left: 85px;
+}
+
+.header_logo {
+	width: 360px;
+	margin-left: -30px;
+	font-weight: bold;
+	background-color: #ffae00;
+	margin-bottom: 5px;
+	margin-top: 20px;
+	padding: 10px;
+	color: #000;
+}
+
+.addInput {
+	padding: 10px;
+	border: 1px solid #000;
+	width: 340px;
+}
+
+.addBtn{
+	width: 100px;
+	height: 35px;
+	background-color: #ffae00;
+	font-weight: bold;
+	border: none;
+	margin-left: 1px;
+	margin-top: 5px;
+}
+
+.adminSelect {
+	margin-top: 5px;
+	border: 1px solid #000;
+	width: 100px;
+	height: 40px;
+}
+
+.adminInput{
+	margin-top: 5px;
+	border: 1px solid #000;
+	width: 100px;
+	height: 40px;	
+}
+
+.addInput:focus {
+	border: 1px solid #ffae00;
+}
+
+.alert {
+	margin: 0 auto;
+}
+
+.box{
+	margin-left: -30px;
+	margin-top: 5px;
+	width: 360px;
+	height: auto;
+	padding: 10px;
+	background-color: #000;
+}
+
+.footer {
+	width: 360px;
+	margin-left: -30px;
+	background-color: #ffae00;
+	margin-top: 5px;
+	padding: 10px;
+	color: #454545;
+}
+
+.header_left {
+	width: 360px;
+	margin-left: -30px;
+	font-weight: bold;
+	background-color: #ffae00;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	padding: 10px;
+	color: #000;
+}
+
+.header_squad {
+	width: 800px;
+	margin-left: -40px;
+	background-color: #ffae00;
+	font-weight: bold;
+	margin-bottom: 5px;
+	padding: 10px;
+	color: #000;
+	margin-top: 20px;
+}
+
+.squadBox {
+	width: 800px;
+	margin-left: -40px;
+	background-color: #050505;
+	margin-bottom: 5px;
+	color: #a8a8a8;
+	margin-bottom: 50px;
+}
+
+
+.table-striped-custom > tbody > tr:nth-child(1*2) > td,
+.table-striped-custom > tbody > tr:nth-child(odd) > th {
+  background-color: #252525;
+  color: #ccc;
+}
+
+.table-custom th{
+	padding: 12px;
+	border-bottom: 2px solid #1d1d1d;
+	color: #fff;
+}
+
+.table-custom td{
+	padding: 12px;
+	color: #ccc;
+}
+
+.remark{
+	border-bottom: 2px solid #1d1d1d;
+}
+
+.remark td{
+	color: #505050;
+}

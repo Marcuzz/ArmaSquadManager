@@ -1,0 +1,7 @@
+CREATE TABLE `squad` (
+	`PID` TEXT NULL,
+	`Password` VARCHAR(50) NULL DEFAULT NULL,
+	`Nick` TEXT NULL
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
