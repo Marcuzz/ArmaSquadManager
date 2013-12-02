@@ -21,7 +21,12 @@ if(isset($_POST['pass_submit']) && $_GET['pid'] != ''){
 			$Nick = $seg['nick'];
 		}
 	}
-	mysqli_query($db, "INSERT INTO squad (`PID`,`Password`,`Nick`) VALUES('".$PID."','".$PASS."','".$Nick."')");
+	$exists = mysqli_query($db, "SELECT * FROM squad WHERE PID = '$PID'");
+	if($exists == true){
+		echo "A user with this PID already exists!";
+	} elseif($exists == false) {
+		mysqli_query($db, "INSERT INTO squad (`PID`,`Password`,`Nick`) VALUES('".$PID."','".$PASS."','".$Nick."')");
+	}
 }
 
 ?>

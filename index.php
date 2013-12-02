@@ -207,15 +207,17 @@
 		$user_password = md5($_POST['user_password']); ;
 		$user_pid = $_POST['user_uid'];
 
-		$query = mysqli_query($db,"SELECT * FROM squad WHERE PID = $user_pid");
+		$query = mysqli_query($db,"SELECT * FROM squad WHERE PID = '$user_pid'");
 		while($row = mysqli_fetch_array($query)){
 			$db_pid = $row['PID'];
 			$db_password = $row['Password'];
-		}
+		} 
 
 		if($user_pid == $db_pid && $user_password == $db_password){
 			$message->add('success', 'Successfully signed in!');
 			$_SESSION['loggedin_user'] = $db_pid;
+		} else {
+			$message->add('danger', 'There was an error signing in!');
 		}
 	}
 
@@ -344,7 +346,13 @@
 				<b>Squad URL - Put the link on your profile:</b><br> <a href="<?php echo $squad_url; ?>">http://www.ninjah-gaming.co.uk/s/squad/squad.xml</a>
 			</div>
 			<div class="header_left">
-				User Login
+				<?php 
+				if(!$_SESSION['loggedin_user']){ 
+					echo 'User Login';
+				} else {
+					echo 'User Controlpanel';
+				}
+				?>
 			</div>
 			<div class="box">
 				<?php if(isset($_POST['submit_user'])){ $message->display(); } ?>
