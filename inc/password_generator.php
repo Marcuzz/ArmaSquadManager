@@ -22,9 +22,9 @@ if(isset($_POST['pass_submit']) && $_GET['pid'] != ''){
 		}
 	}
 	$exists = mysqli_query($db, "SELECT * FROM squad WHERE PID = '$PID'");
-	if($exists == true){
+	if($exists->num_rows > 0){
 		echo "A user with this PID already exists!";
-	} elseif($exists == false) {
+	} elseif($exists->num_rows == 0) {
 		mysqli_query($db, "INSERT INTO squad (`PID`,`Password`,`Nick`) VALUES('".$PID."','".$PASS."','".$Nick."')");
 	}
 }
