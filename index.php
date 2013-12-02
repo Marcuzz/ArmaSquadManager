@@ -238,10 +238,14 @@
 				} else {
 					$user_im = $seg->icq;
 				}
-				if($_POST['user_remark'] != ''){
+				if($_POST['user_remark'] != '' && $enable_ranks == 'true' && strpos($_POST['user_remark'], '-') === false){
 					$str = $seg->remark;
 					$str = substr($str,0,strrpos($str, '-'));
 					$user_remark = $str . " - " . $_POST['user_remark'];
+				} elseif($_POST['user_remark'] != '' && $enable_ranks == 'true' && strpos($_POST['user_remark'], '-') === true) {
+					$message->add('danger', 'Your remark can not contain dashes!');
+				} elseif($_POST['user_remark'] != '' && $enable_ranks != 'true') {
+					$user_remark = $_POST['user_remark'];
 				} else {
 					$user_remark = $seg->remark;
 				}
@@ -355,7 +359,7 @@
 				?>
 			</div>
 			<div class="box">
-				<?php if(isset($_POST['submit_user'])){ $message->display(); } ?>
+				<?php if(isset($_POST['submit_user']) or $_POST['save_user']){ $message->display(); } ?>
 				<form name="userform" method="POST"> 
 				<?php if(!$_SESSION['loggedin_user']) { ?>
 				<input class="addInput" type="text" name="user_uid" placeholder="Player ID">
