@@ -15,6 +15,11 @@ The installation is simple:
 - Upload all the files to your web directory
 - Import the sql.sql file found in the sql folder to your mysql database
 - Configure the config.php to your liking
+- Drop your squad.xml file in the main directory, make sure it's named squad.xml! This is important!
+- Drop your squad logo in the main directory, having the name you configured in the config.php
+- Drop the squad logo image that will show in game(The logo.paa / logo.tga or logo.jpg file) in the main directory
+
+More instructions can be found here: http://community.bistudio.com/wiki/squad.xml 
 
 Issues
 --------------
