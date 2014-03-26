@@ -347,7 +347,7 @@
 				<br> <font color="green"><b>Player ID</b></font> = <a href="http://community.bistudio.com/wiki/squad.xml#How_to_get_your_Player-UID">How to find it</a>
 				<br> <font color="green"><b>IM</b></font> = Instant messager, aka on skype, steam, etc
 				<br><br>
-				<b>Squad URL - Put the link on your profile:</b><br> <a href="<?php echo $squad_url; ?>">http://www.ninjah-gaming.co.uk/s/squad/squad.xml</a>
+				<b>Squad URL - Put the link on your profile:</b><br> <a href="<?php echo $squad_url; ?>"><?php echo $squad_url; ?></a>
 			</div>
 			<div class="header_left">
 				<?php 
