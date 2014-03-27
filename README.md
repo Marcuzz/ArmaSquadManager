@@ -22,6 +22,13 @@ The installation is simple:
 
 More instructions can be found here: http://community.bistudio.com/wiki/squad.xml 
 
+password_generator.php
+--------------
+- If you need a user to set up an account on the squad page you want to send them a URL looking like this:
+http://www.yourdomain.com/index.php?pid=PLAYERID
+- Replace PlayerID with the users playerid in the squad.xml
+- Remember to remove the includes/password_generator.php if you're not using it!
+
 Issues
 --------------
 If there are any issues please create a new issue in the "issues" tab or send in a pull request, I'll gladly review them :)
