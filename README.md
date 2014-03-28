@@ -27,7 +27,7 @@ password_generator.php
 - If you need a user to set up an account on the squad page you want to send them a URL looking like this:
 http://www.yourdomain.com/index.php?pid=PLAYERID
 - Replace PlayerID with the users playerid in the squad.xml
-- Remember to remove the includes/password_generator.php if you're not using it!
+- Remember to remove the inc/password_generator.php if you're not using it!
 
 Issues
 --------------
