@@ -16,6 +16,9 @@
 	require_once('inc/database.php');
 	$message = new FlashMessages();
 	$xml = simplexml_load_file("squad.xml");
+	if (!$xml) {
+		die('Couldn\'t find squad.xml!');
+	}
 
 	if(isset($_POST['squad_submit'])){
 		if(count($xml)){
@@ -279,67 +282,125 @@
 </head>
 
 <body class="custom-body">
-	<div class="container">
+<div class="squad_container">
+	<div class="row">
 		<div class="col-lg-4">
-			<div class="header_logo">
-				Squad Logo
-			</div>
-			<div class="logo_bg">
-				<div class="logo">
-					<img src="<?php echo $image_url; ?>" width="200px" height="200px"></img>
+			<div class="left_box">
+				<div class="header_logo">
+					Squad Logo
 				</div>
-			</div>
-			<div class="header_left">
-				Squad Information
-			</div>
-			<div class="box">
-				<form name="squad_form" method="POST">
-				<?php 	
-				if($_SESSION['loggedin']) {
-					if(count($xml)){
-					   	$result = $xml->xpath("//squad");
-					   	foreach($result as $squad_info){
-					   		echo'
-							<input class="addInput" name="squad_tag" type="text" placeholder="Tag: '.$squad_info['nick'].'">
-							<input class="addInput" name="squad_name" type="text" placeholder="Name: '.$squad_info->name.'">
-							<input class="addInput" name="squad_email" type="text" placeholder="Email: '. $squad_info->email.'">
-							<input class="addInput" name="squad_web" type="text" placeholder="Web: '.$squad_info->web.'">
-							<input class="addInput" name="squad_picture" type="text" placeholder="Picture: '.$squad_info->picture.'">
-					   		<input class="addBtn" type="submit" value="Save" name="squad_submit">';
-					   	}
-					}
-				} elseif(!$_SESSION['loggedin']){
-					if(count($xml)){
-					   	$result = $xml->xpath("//squad");
-					   	foreach($result as $squad_info){
-					   		echo '
-					   		Clantag = [' .$squad_info["nick"]. ']<br>
-					   		Name = ' . $squad_info->name .'<br>
-					   		Email = ' . $squad_info->email .'<br>
-					   		Website = <a href="'.$squad_info->web.'">' . $squad_info->web . '</a>';
-					   	}
-					}
-				}
-				?>
-				</form>
-			</div>
-			<div class="header_left">
-				Squad Registration form
-			</div>
-			<div class="box">
-				<?php if(isset($_POST['submit'])){ $message->display(); } ?>
-				<form name="regform" method="POST">
-					<input class="addInput" type="text" name="addInput_UID" placeholder="* Player ID">
-					<input class="addInput" type="text" name="addInput_IGN" placeholder="* Ingame name(Has to be 100% correct)">
-					<input class="addInput" type="password" name="addInput_Password" placeholder="* Password">
-					<input class="addInput" type="text" name="addInput_Name" placeholder="Name">
-					<input class="addInput" type="text" name="addInput_Email" placeholder="Email Address">
-					<input class="addInput" type="text" name="addInput_ICQ" placeholder="IM">
-					<?php
-						if($enable_remark == 'true'){
-							echo '<input class="addInput" type="text" name="addInput_Remark" placeholder="Remark(Ex: I\'m a cool guy!)">';
+				<div class="logo_bg">
+					<div class="logo">
+						<img src="<?php echo $image_url; ?>" width="200px" height="200px"></img>
+					</div>
+				</div>
+				<div class="header_left">
+					Squad Information
+				</div>
+				<div class="box">
+					<form name="squad_form" method="POST">
+					<?php 	
+					if($_SESSION['loggedin']) {
+						if(count($xml)){
+							$result = $xml->xpath("//squad");
+							foreach($result as $squad_info){
+								echo'
+								<input class="addInput" name="squad_tag" type="text" placeholder="Tag: '.$squad_info['nick'].'">
+								<input class="addInput" name="squad_name" type="text" placeholder="Name: '.$squad_info->name.'">
+								<input class="addInput" name="squad_email" type="text" placeholder="Email: '. $squad_info->email.'">
+								<input class="addInput" name="squad_web" type="text" placeholder="Web: '.$squad_info->web.'">
+								<input class="addInput" name="squad_picture" type="text" placeholder="Picture: '.$squad_info->picture.'">
+								<input class="addBtn" type="submit" value="Save" name="squad_submit">';
+							}
 						}
+					} elseif(!$_SESSION['loggedin']){
+						if(count($xml)){
+							$result = $xml->xpath("//squad");
+							foreach($result as $squad_info){
+								echo '
+								Clantag = [' .$squad_info["nick"]. ']<br>
+								Name = ' . $squad_info->name .'<br>
+								Email = ' . $squad_info->email .'<br>
+								Website = <a href="'.$squad_info->web.'">' . $squad_info->web . '</a>';
+							}
+						}
+					}
 					?>
+					</form>
+				</div>
+				<div class="header_left">
+					Squad Registration form
+				</div>
+				<div class="box">
+					<?php if(isset($_POST['submit'])){ $message->display(); } ?>
+					<form name="regform" method="POST">
+						<input class="addInput" type="text" name="addInput_UID" placeholder="* Player ID">
+						<input class="addInput" type="text" name="addInput_IGN" placeholder="* Ingame name(Has to be 100% correct)">
+						<input class="addInput" type="password" name="addInput_Password" placeholder="* Password">
+						<input class="addInput" type="text" name="addInput_Name" placeholder="Name">
+						<input class="addInput" type="text" name="addInput_Email" placeholder="Email Address">
+						<input class="addInput" type="text" name="addInput_ICQ" placeholder="IM">
+						<?php
+							if($enable_remark == 'true'){
+								echo '<input class="addInput" type="text" name="addInput_Remark" placeholder="Remark(Ex: I\'m a cool guy!)">';
+							}
+						?>
+						<input class="addBtn" type="submit" name="submit">
+					</form>
+					<br>
+					<font color="red">*</font> = Required
+					<br> <font color="green"><b>Player ID</b></font> = <a href="http://community.bistudio.com/wiki/squad.xml#How_to_get_your_Player-UID">How to find it</a>
+					<br> <font color="green"><b>IM</b></font> = Instant messager, aka on skype, steam, etc
+					<br><br>
+					<b>Squad URL - Put the link on your profile:</b><br> <?php echo $squad_url; ?>
+				</div>
+				<div class="header_left">
+					<?php 
+					if(!$_SESSION['loggedin_user']){ 
+						echo 'User Login';
+					} else {
+						echo 'User Controlpanel';
+					}
+					?>
+				</div>
+				<div class="box">
+					<?php if(isset($_POST['submit_user']) or $_POST['save_user']){ $message->display(); } ?>
+					<form name="userform" method="POST"> 
+					<?php if(!$_SESSION['loggedin_user']) { ?>
+					<input class="addInput" type="text" name="user_uid" placeholder="Player ID">
+					<input class="addInput" type="password" name="user_password" placeholder="Password">
+					<input class="addBtn" type="submit" name="submit_user">
+					<?php } elseif($_SESSION['loggedin_user']) {?>
+					<input class="addInput" type="text" placeholder="Ingame name" name="user_name">
+					<input class="addInput" type="text" placeholder="IM" name="user_im">
+					<?php if($enable_remark != 'false'){?>
+					<input class="addInput" type="text" placeholder="Remark" name="user_remark">
+					<?php } ?>
+					<input class="addBtn" type="submit" value="Save" name="save_user">
+					<input class="addBtn" type="submit" value="Sign Out" name="logout_admin">
+					<?php }?>
+					</form>
+				</div>
+				<div class="header_left">
+					Administrator Login
+				</div>
+				<div class="box">
+					<?php if(isset($_POST['submit_admin'])){ $message->display(); } ?>
+					<?php if(!$_SESSION['loggedin']){ ?>
+					<form name="adminform" method="POST">
+						<input class="addInput" type="password" name="password_admin" placeholder="Password">
+						<input class="addBtn" type="submit" name="submit_admin">
+					</form>
+					<?php } elseif($_SESSION['loggedin']) { ?>
+					<form name="adminform" method="POST">
+					You are already signed in as admin!<br>
+					<input class="addBtn" type="submit" value="Sign Out" name="logout_admin">
+					</form>
+					<?php } ?>
+				</div>
+				<div class="squad_footer">
+					&copy;Marcuz
+				</div>
 					<input class="addBtn" type="submit" name="submit">
 				</form>
 				<br>
@@ -397,100 +458,103 @@
 				&copy;Marcuz
 			</div>
 		</div>
-		<div class="col-lg-4">
-			<div class="header_squad">
-				Squad Members
-			</div>
-			<div class="squadBox">
-				<table class="table-custom table-striped-custom" width="100%">
-					<thead>
-						<th>
-							User ID
-						</th>
-						<th>
-							Nick
-						</th>
-						<th>
-							IM
-						</th>
-						<?php
-						if($_SESSION['loggedin']){
-							echo "<th>Action</th>";
-							echo "<th></th>";
-							echo "<th></th>";
-						}
-						?>
-					</thead>
-					<tbody>
-						<?php
-							foreach($ranks as $rankslist) {
-								$rank_list .= "<option value=".$rankslist.">".str_replace("_", " ", $rankslist)."</option>";
+		<div class="col-lg-8">
+			<div class="squad_box">
+				<div class="header_squad">
+					Squad Members
+				</div>
+				<div class="squad_content">
+					<table class="table-custom table-striped-custom" width="100%">
+						<thead>
+							<th>
+								User ID
+							</th>
+							<th>
+								Nick
+							</th>
+							<th>
+								IM
+							</th>
+							<?php
+							if($_SESSION['loggedin']){
+								echo "<th>Action</th>";
+								echo "<th></th>";
+								echo "<th></th>";
 							}
-							if(count($xml)){
-	   							$result = $xml->xpath("//member");
-								foreach($result as $member){
-									$members_uid = $member["id"];
-									$members_name = $member["nick"];
-									$members_im = $member->icq;
-									$members_remark = $member->remark;
-									if($enable_ranks == 'true'){
-										include('inc/rank_images.php');
-									}
+							?>
+						</thead>
+						<tbody>
+							<?php
+								foreach($ranks as $rankslist) {
+									$rank_list .= "<option value=".$rankslist.">".str_replace("_", " ", $rankslist)."</option>";
+								}
+								if(count($xml)){
+									$result = $xml->xpath("//member");
+									foreach($result as $member){
+										$members_uid = $member["id"];
+										$members_name = $member["nick"];
+										$members_im = $member->icq;
+										$members_remark = $member->remark;
+										if($enable_ranks == 'true'){
+											include('inc/rank_images.php');
+										}
 
-									if(!$_SESSION['loggedin']){
-									echo "<tr>
-									<td>". $members_uid ."</td>
-									<td>". $members_name ."</td>
-									<td>". $members_im ."</td>
-									</tr>";
-									} elseif ($_SESSION['loggedin'] && $enable_ranks == 'true'){
-									echo "<tr>
-									<td>". $members_uid ."</td>
-									<td>". $members_name ."</td>
-									<td>". $members_im ."</td>
-									<form name='promoteform' method='POST'>
-									<input type='hidden' name='select_hidden' value='". $members_uid ."'>
-									<td style='margin-top: 10px;'><select class='adminSelect' name='rank_select'>".$rank_list."</td>
-									<td style='margin-top: 10px;'><input class='adminInput' type='text' placeholder='Speciality' name='rank_speciality'></td>
-									</tr>";		
-									} elseif ($_SESSION['loggedin'] && $enable_ranks != 'true'){
-									echo "<tr>
-									<td>". $members_uid ."</td>
-									<td>". $members_name ."</td>
-									<td>". $members_im ."</td>
-									<form name='promoteform' method='POST'>
-									<input type='hidden' name='select_hidden' value='". $members_uid ."'>
-									<td style='margin-top: 10px;'></td>
-									<td style='margin-top: 10px;'><input class='adminInput' type='text' placeholder='Speciality' name='rank_speciality'></td>
-									</tr>";		
-									}
+										if(!$_SESSION['loggedin']){
+										echo "<tr>
+										<td>". $members_uid ."</td>
+										<td>". $members_name ."</td>
+										<td>". $members_im ."</td>
+										</tr>";
+										} elseif ($_SESSION['loggedin'] && $enable_ranks == 'true'){
+										echo "<tr>
+										<td>". $members_uid ."</td>
+										<td>". $members_name ."</td>
+										<td>". $members_im ."</td>
+										<form name='promoteform' method='POST'>
+										<input type='hidden' name='select_hidden' value='". $members_uid ."'>
+										<td style='margin-top: 10px;'><select class='adminSelect' name='rank_select'>".$rank_list."</td>
+										<td style='margin-top: 10px;'><input class='adminInput' type='text' placeholder='Speciality' name='rank_speciality'></td>
+										</tr>";		
+										} elseif ($_SESSION['loggedin'] && $enable_ranks != 'true'){
+										echo "<tr>
+										<td>". $members_uid ."</td>
+										<td>". $members_name ."</td>
+										<td>". $members_im ."</td>
+										<form name='promoteform' method='POST'>
+										<input type='hidden' name='select_hidden' value='". $members_uid ."'>
+										<td style='margin-top: 10px;'></td>
+										<td style='margin-top: 10px;'><input class='adminInput' type='text' placeholder='Speciality' name='rank_speciality'></td>
+										</tr>";		
+										}
 
-									if(!$_SESSION['loggedin']){
-									echo '<tr class="remark">
-									<td>'.$img.'</td>
-									<td><i>-"' . str_replace("Banned", "<font color='red'><b>Banned</b></font>", $members_remark) . '"</i></td>
-									<td></td>
-									</tr>';
-									} elseif($_SESSION['loggedin']) {
-									echo '<tr class="remark">
-									<td>'.$img.'</td>
-									<td><i>-"' . str_replace("Banned", "<font color='red'><b>Banned</b></font>", $members_remark) . '"</i></td>
-									<td></td>
-									<input type="hidden" name="remove_hidden" value="'. $members_uid .'">
-									<input type="hidden" name="remove_hidden2" value="'. $members_name .'">
-									<td><input class="addBtn" type="submit" value="Remove" name="remove_submit"></td>
-									<td style="margin-top: 10px;""><input class="addBtn" type="submit" value="Submit" name="rank_submit"></td>
-									</form>
-									<td></td>
-									</tr>';	
+										if(!$_SESSION['loggedin']){
+										echo '<tr class="remark">
+										<td>'.$img.'</td>
+										<td><i>-"' . str_replace("Banned", "<font color='red'><b>Banned</b></font>", $members_remark) . '"</i></td>
+										<td></td>
+										</tr>';
+										} elseif($_SESSION['loggedin']) {
+										echo '<tr class="remark">
+										<td>'.$img.'</td>
+										<td><i>-"' . str_replace("Banned", "<font color='red'><b>Banned</b></font>", $members_remark) . '"</i></td>
+										<td></td>
+										<input type="hidden" name="remove_hidden" value="'. $members_uid .'">
+										<input type="hidden" name="remove_hidden2" value="'. $members_name .'">
+										<td><input class="addBtn" type="submit" value="Remove" name="remove_submit"></td>
+										<td style="margin-top: 10px;""><input class="addBtn" type="submit" value="Submit" name="rank_submit"></td>
+										</form>
+										<td></td>
+										</tr>';	
+										}
 									}
 								}
-							}
-						?>
-					</tbody>
-				</table>
+							?>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 </body>
 

@@ -12,7 +12,7 @@
 
 // WHEN THIS FILE IS NOT NEEDED, PLEASE REMOVE FROM THE DIRECTORY TO CAUSE NO HARM TO THE PANEL
 
-if(isset($_POST['pass_submit']) && $_GET['pid'] != ''){
+if(isset($_POST['pass_submit']) && isset($_GET['pid'])){
 	foreach($xml as $seg){
 		if($seg['id'] == $_GET['pid']){
 			$dom=dom_import_simplexml($seg);
@@ -37,8 +37,10 @@ if(isset($_POST['pass_submit']) && $_GET['pid'] != ''){
 
 
 <body class="custom-body">
+	<?php if ($_GET['pid'] != '') { ?>
 	<form name="passform" method="POST">
 		<input class="addInput" style="margin-left: 5px; margin-top: 5px;" type="password" name="pass_gen" placeholder="Password">
 		<input class="addBtn" type="submit" name="pass_submit" value="Submit">
 	</form>
+	<?php } else { echo 'No PID specified'; }?>
 </body>

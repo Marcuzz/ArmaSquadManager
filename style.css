@@ -1,63 +1,54 @@
-* {
-	padding: 0px;
-	margin: 0px;
-}
-
-a {
-	text-decoration: none;
-	color: green;
-}
-
-a:hover {
-	text-decoration: none;
-	color: green;
-}
-
-a:visited {
-	text-decoration: none;
-	color: green;
-}
-
 .custom-body {
-	background-color: #1d1d1d;
-	color: #a8a8a8;
+  margin: 0;
+  background: url(img/debut_light.png);
 }
 
 .logo_bg{
-	width: 360px;
-	height: 200px;
-	background-color: #050505;
-	margin-left: -30px;
+	height: auto; 
+	background-color: #fff;
+	border: 1px solid #eaeaea;
+	margin-bottom: 5px;
 }
 
 .logo {
-	width: 200px;
 	margin-left: 85px;
+	padding: 10px; 
 }
 
 .header_logo {
-	width: 360px;
-	margin-left: -30px;
 	font-weight: bold;
-	background-color: #ffae00;
-	margin-bottom: 5px;
-	margin-top: 20px;
+	background-color: #d9d9d9;
 	padding: 10px;
 	color: #000;
+	border-right: 1px solid #eaeaea;
+	border-top: 1px solid #eaeaea;
+	border-left: 1px solid #eaeaea;
+	background-image: linear-gradient(#fff, #fafafa)
+}
+
+.squad_container {
+	margin-right: auto;
+	margin-left: auto;
+	width: 100%;
+	min-height: auto;
+	padding: 10px;
+	margin: 0 auto;
 }
 
 .addInput {
 	padding: 10px;
-	border: 1px solid #000;
-	width: 340px;
+	border: 1px solid #eaeaea;
+	margin-bottom: 2px;
+	width: 100%;
 }
 
 .addBtn{
 	width: 100px;
 	height: 35px;
-	background-color: #ffae00;
+	background-color: #53bf6b;
 	font-weight: bold;
 	border: none;
+	color: #000;
 	margin-left: 1px;
 	margin-top: 5px;
 }
@@ -77,7 +68,7 @@ a:visited {
 }
 
 .addInput:focus {
-	border: 1px solid #ffae00;
+	border: 1px solid #53bf6b;
 }
 
 .alert {
@@ -85,52 +76,42 @@ a:visited {
 }
 
 .box{
-	margin-left: -30px;
-	margin-top: 5px;
-	width: 360px;
 	height: auto;
 	padding: 10px;
-	background-color: #000;
-}
-
-.footer {
-	width: 360px;
-	margin-left: -30px;
-	background-color: #ffae00;
-	margin-top: 5px;
-	padding: 10px;
-	color: #454545;
+	background-color: #fff;
+	border: 1px solid #eaeaea;
+	margin-bottom: 5px;
 }
 
 .header_left {
-	width: 360px;
-	margin-left: -30px;
 	font-weight: bold;
-	background-color: #ffae00;
-	margin-bottom: 5px;
-	margin-top: 5px;
+	background-color: #d9d9d9;
 	padding: 10px;
 	color: #000;
+	border-right: 1px solid #eaeaea;
+	border-top: 1px solid #eaeaea;
+	border-left: 1px solid #eaeaea;
+	background-image: linear-gradient(#fff, #fafafa)
 }
 
 .header_squad {
-	width: 800px;
-	margin-left: -40px;
-	background-color: #ffae00;
+	background-color: #d9d9d9;
 	font-weight: bold;
-	margin-bottom: 5px;
 	padding: 10px;
 	color: #000;
-	margin-top: 20px;
+	border-right: 1px solid #eaeaea;
+	border-top: 1px solid #eaeaea;
+	border-left: 1px solid #eaeaea;
+	background-image: linear-gradient(#fff, #fafafa)
 }
 
-.squadBox {
-	width: 800px;
-	margin-left: -40px;
-	background-color: #050505;
+.squad_content {
+	background-color: #fff;
 	margin-bottom: 5px;
-	color: #a8a8a8;
 	margin-bottom: 50px;
+	border-right: 1px solid #eaeaea;
+	border-top: 1px solid #eaeaea;
+	border-left: 1px solid #eaeaea;
 }
 
 
@@ -142,19 +123,69 @@ a:visited {
 
 .table-custom th{
 	padding: 12px;
-	border-bottom: 2px solid #1d1d1d;
-	color: #fff;
+	border-bottom: 1px solid #eaeaea;
+	color: #000;
 }
 
 .table-custom td{
 	padding: 12px;
-	color: #ccc;
+	color: #000;
 }
 
 .remark{
-	border-bottom: 2px solid #1d1d1d;
+	border-bottom: 1px solid #eaeaea;
 }
 
 .remark td{
-	color: #505050;
+	color: #a8a8a8;
+}
+
+/* @MEDIA */
+@media (max-width: 1200px) {
+  .squad_footer{
+	display: none;
+  }
+}
+@media (min-width: 768px) {
+  .footer, .banner, .squad_container{
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .footer, .banner, .squad_container {
+    width: 970px;
+  }
+  .content-right{
+	border-left: 1px solid #eaeaea;
+	padding-left: 12px;
+	margin-left: -22px;
+  }
+}
+@media (min-width: 1200px) {
+  .footer, .banner, .squad_container {
+    width: 1170px;
+  }
+  .content-right{
+	border-left: 1px solid #eaeaea;
+	padding-left: 12px;
+	margin-left: 12px;
+  }
+  .left_box {
+	width: 360px;
+	margin-left: -11px;
+  }
+  .squad_box {
+	margin-left: -40px;
+	margin-right: -12px;
+  }
+  .squad_footer {
+	background-color: #53bf6b;
+	padding: 10px;
+	color: #fff;
+	text-align: right;
+	font-weight: bold;
+	border-bottom: 1px solid #eaeaea;
+	border-right: 1px solid #eaeaea;
+	border-left: 1px solid #eaeaea;
+  }
 }
