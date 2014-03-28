@@ -48,21 +48,21 @@
 	background-color: #53bf6b;
 	font-weight: bold;
 	border: none;
-	color: #000;
+	color: #fff;
 	margin-left: 1px;
 	margin-top: 5px;
 }
 
 .adminSelect {
 	margin-top: 5px;
-	border: 1px solid #000;
+	border: 1px solid #eaeaea;
 	width: 100px;
 	height: 40px;
 }
 
 .adminInput{
 	margin-top: 5px;
-	border: 1px solid #000;
+	border: 1px solid #eaeaea;
 	width: 100px;
 	height: 40px;	
 }
