@@ -10,7 +10,7 @@
 // And if a rank is found it will put the rank image next to their name
 
 	$rank_images = array('', 
-	'img/ranks/120px-Army-USA-OR-02-2014.svg.png', 
+	'img/ranks/Army-USA-OR-02-2014.svg.png', 
 	'img/ranks/Army-USA-OR-03-2014.svg.png',
 	'img/ranks/Army-USA-OR-04b.svg.png',
 	'img/ranks/Army-USA-OR-04a.svg.png',
@@ -96,6 +96,6 @@
 	} elseif(strpos($members_remark, 'General') === 0) {
 		$img = '<img src="'.$rank_images[27].'" width="70px" height="20px"></img>';
 	} else {
-		$img = '';
+		$img = '<img src="'.$rank_images[1].'" width="20px" height="20px"></img>';
 	} 
 ?>

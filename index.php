@@ -279,6 +279,11 @@
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </head>
 
 <body class="custom-body">
@@ -401,61 +406,6 @@
 				<div class="squad_footer">
 					&copy;Marcuz
 				</div>
-					<input class="addBtn" type="submit" name="submit">
-				</form>
-				<br>
-				<font color="red">*</font> = Required
-				<br> <font color="green"><b>Player ID</b></font> = <a href="http://community.bistudio.com/wiki/squad.xml#How_to_get_your_Player-UID">How to find it</a>
-				<br> <font color="green"><b>IM</b></font> = Instant messager, aka on skype, steam, etc
-				<br><br>
-				<b>Squad URL - Put the link on your profile:</b><br> <a href="<?php echo $squad_url; ?>"><?php echo $squad_url; ?></a>
-			</div>
-			<div class="header_left">
-				<?php 
-				if(!$_SESSION['loggedin_user']){ 
-					echo 'User Login';
-				} else {
-					echo 'User Controlpanel';
-				}
-				?>
-			</div>
-			<div class="box">
-				<?php if(isset($_POST['submit_user']) or $_POST['save_user']){ $message->display(); } ?>
-				<form name="userform" method="POST"> 
-				<?php if(!$_SESSION['loggedin_user']) { ?>
-				<input class="addInput" type="text" name="user_uid" placeholder="Player ID">
-				<input class="addInput" type="password" name="user_password" placeholder="Password">
-				<input class="addBtn" type="submit" name="submit_user">
-				<?php } elseif($_SESSION['loggedin_user']) {?>
-				<input class="addInput" type="text" placeholder="Ingame name" name="user_name">
-				<input class="addInput" type="text" placeholder="IM" name="user_im">
-				<?php if($enable_remark != 'false'){?>
-				<input class="addInput" type="text" placeholder="Remark" name="user_remark">
-				<?php } ?>
-				<input class="addBtn" type="submit" value="Save" name="save_user">
-				<input class="addBtn" type="submit" value="Sign Out" name="logout_admin">
-				<?php }?>
-				</form>
-			</div>
-			<div class="header_left">
-				Administrator Login
-			</div>
-			<div class="box">
-				<?php if(isset($_POST['submit_admin'])){ $message->display(); } ?>
-				<?php if(!$_SESSION['loggedin']){ ?>
-				<form name="adminform" method="POST">
-					<input class="addInput" type="password" name="password_admin" placeholder="Password">
-					<input class="addBtn" type="submit" name="submit_admin">
-				</form>
-				<?php } elseif($_SESSION['loggedin']) { ?>
-				<form name="adminform" method="POST">
-				You are already signed in as admin!<br>
-				<input class="addBtn" type="submit" value="Sign Out" name="logout_admin">
-				</form>
-				<?php } ?>
-			</div>
-			<div class="footer">
-				&copy;Marcuz
 			</div>
 		</div>
 		<div class="col-lg-8">
@@ -540,8 +490,26 @@
 										<td></td>
 										<input type="hidden" name="remove_hidden" value="'. $members_uid .'">
 										<input type="hidden" name="remove_hidden2" value="'. $members_name .'">
-										<td><input class="addBtn" type="submit" value="Remove" name="remove_submit"></td>
+										<td><button type="button" class="addBtn" data-toggle="modal" href="#Remove">Remove</button></td>
 										<td style="margin-top: 10px;""><input class="addBtn" type="submit" value="Submit" name="rank_submit"></td>
+										
+										<div class="modal fade" id="Remove">
+											  <div class="modal-dialog">
+												<div class="modal-content">
+												  <div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+													<h4 class="modal-title">Are you sure?</h4>
+												  </div>
+												  <div class="modal-body">
+													<p>Are you sure you want to remove this person from the squad?</p>
+												  </div>
+												  <div class="modal-footer">
+													<button type="button" class="addBtn_danger" data-dismiss="modal">No</button>
+													<input class="addBtn" type="submit" value="Yes" name="remove_submit">
+												  </div>
+												</div><!-- /.modal-content -->
+											  </div><!-- /.modal-dialog -->
+											</div><!-- /.modal -->
 										</form>
 										<td></td>
 										</tr>';	

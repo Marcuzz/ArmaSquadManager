@@ -53,6 +53,17 @@
 	margin-top: 5px;
 }
 
+.addBtn_danger{
+	width: 66px;
+	height: 35px;
+	background-color: #ff3000;
+	font-weight: bold;
+	border: none;
+	color: #fff;
+	margin-left: 1px;
+	margin-top: 5px;
+}
+
 .adminSelect {
 	margin-top: 5px;
 	border: 1px solid #eaeaea;
@@ -147,11 +158,6 @@
 	margin-top: -25px;
   }
 }
-@media (min-width: 0px) {
-  .squad_container {
-	margin-top: -25px;
-  }
-}
 @media (min-width: 768px) {
   .squad_container{
     width: 750px;
@@ -180,12 +186,11 @@
   .left_box {
 	width: 360px;
 	margin-left: -11px;
-	margin-top: -25px;
+
   }
   .squad_box {
 	margin-left: -40px;
 	margin-right: -12px;
-	margin-top: -25px;
   }
   .squad_footer {
 	background-color: #53bf6b;
