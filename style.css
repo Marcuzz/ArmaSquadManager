@@ -144,15 +144,21 @@
 @media (max-width: 1200px) {
   .squad_footer{
 	display: none;
+	margin-top: -25px;
+  }
+}
+@media (min-width: 0px) {
+  .squad_container {
+	margin-top: -25px;
   }
 }
 @media (min-width: 768px) {
-  .footer, .banner, .squad_container{
+  .squad_container{
     width: 750px;
   }
 }
 @media (min-width: 992px) {
-  .footer, .banner, .squad_container {
+  .squad_container {
     width: 970px;
   }
   .content-right{
@@ -162,8 +168,9 @@
   }
 }
 @media (min-width: 1200px) {
-  .footer, .banner, .squad_container {
+  .squad_container {
     width: 1170px;
+	margin-top: 0px;
   }
   .content-right{
 	border-left: 1px solid #eaeaea;
@@ -173,10 +180,12 @@
   .left_box {
 	width: 360px;
 	margin-left: -11px;
+	margin-top: -25px;
   }
   .squad_box {
 	margin-left: -40px;
 	margin-right: -12px;
+	margin-top: -25px;
   }
   .squad_footer {
 	background-color: #53bf6b;
@@ -189,3 +198,4 @@
 	border-left: 1px solid #eaeaea;
   }
 }
+
