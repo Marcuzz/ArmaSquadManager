@@ -32,8 +32,10 @@
 		   		}
 		   		if($_POST['squad_name'] != ''){
 		   			$squad_info->name = $_POST['squad_name'];
+					$squad_info->title = $_POST['squad_name'];
 		   		} elseif ($_POST['squad_name'] == ''){
 		   			$squad_info->name = $squad_info->name;
+					$squad_info->title = $squad_info->name;
 		   		}
 		   		if($_POST['squad_email'] != ''){
 		   			$squad_info->email = $_POST['squad_email'];
@@ -404,7 +406,7 @@
 					<?php } ?>
 				</div>
 				<div class="squad_footer">
-					&copy;Marcuz
+					&copy; Marcuz
 				</div>
 			</div>
 		</div>

@@ -23,7 +23,7 @@ if(isset($_POST['pass_submit']) && isset($_GET['pid'])){
 	}
 	$exists = mysqli_query($db, "SELECT * FROM squad WHERE PID = '$PID'");
 	if($exists->num_rows > 0){
-		echo "A user with this PID already exists!";
+		die("A user with this PID already exists!");
 	} elseif($exists->num_rows == 0) {
 		mysqli_query($db, "INSERT INTO squad (`PID`,`Password`,`Nick`) VALUES('".$PID."','".$PASS."','".$Nick."')");
 	}
@@ -32,14 +32,16 @@ if(isset($_POST['pass_submit']) && isset($_GET['pid'])){
 ?>
 
 <head>
-<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Create Squad User</title>
 </head>
 
 
 <body class="custom-body">
 	<?php if ($_GET['pid'] != '') { ?>
 	<form name="passform" method="POST">
-		<input class="addInput" style="margin-left: 5px; margin-top: 5px;" type="password" name="pass_gen" placeholder="Password">
+		<br><b style="margin-left: 15px;">Creating a user for PID: <?php echo $_GET['pid'];?><br></b>
+		<input class="addInput" style="margin-left: 15px; margin-top: 5px; width: 200px;" type="password" name="pass_gen" placeholder="Password">
 		<input class="addBtn" type="submit" name="pass_submit" value="Submit">
 	</form>
 	<?php } else { echo 'No PID specified'; }?>
