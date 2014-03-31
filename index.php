@@ -95,9 +95,9 @@
 			$ICQ = 'N/A';
 		}
 		if($_POST['addInput_Remark'] != '' && $enable_ranks == "true"){
-			$Remark = "Private First Class - " . $_POST['addInput_Remark'];
+			$Remark = str_replace("_", " ", $ranks[0]) . " - " . $_POST['addInput_Remark'];
 		} elseif($_POST['addInput_Remark'] == '' && $enable_ranks == "true") {
-			$Remark = "Private First Class";
+			$Remark = str_replace("_", " ", $ranks[0]);
 		} elseif($_POST['addInput_Remark'] != '' && $enable_ranks == "false") {
 			$Remark = $_POST['addInput_Remark'];
 		} elseif($_POST['addInput_Remark'] == '' && $enable_ranks == "true") {
@@ -113,7 +113,7 @@
 		if($enable_remark == 'true'){
 			$member->addChild('remark', $Remark);
 		} else {
-			$member->addChild('remark', 'Private First Class');
+			$member->addChild('remark', str_replace("_", " ", $ranks[0]));
 		}
 		//$xml->asXML('squad.xml');
 
@@ -465,7 +465,7 @@
 										<form name='promoteform' method='POST'>
 										<input type='hidden' name='select_hidden' value='". $members_uid ."'>
 										<td style='margin-top: 10px;'><select class='adminSelect' name='rank_select'>".$rank_list."</td>
-										<td style='margin-top: 10px;'><input class='adminInput' type='text' placeholder='Speciality' name='rank_speciality'></td>
+										<td style='margin-top: 10px;'><input class='adminInput' type='text' placeholder='Remark' name='rank_speciality'></td>
 										</tr>";		
 										} elseif ($_SESSION['loggedin'] && $enable_ranks != 'true'){
 										echo "<tr>
@@ -475,7 +475,7 @@
 										<form name='promoteform' method='POST'>
 										<input type='hidden' name='select_hidden' value='". $members_uid ."'>
 										<td style='margin-top: 10px;'></td>
-										<td style='margin-top: 10px;'><input class='adminInput' type='text' placeholder='Speciality' name='rank_speciality'></td>
+										<td style='margin-top: 10px;'><input class='adminInput' type='text' placeholder='Remark' name='rank_speciality'></td>
 										</tr>";		
 										}
 
@@ -492,8 +492,9 @@
 										<td></td>
 										<input type="hidden" name="remove_hidden" value="'. $members_uid .'">
 										<input type="hidden" name="remove_hidden2" value="'. $members_name .'">
-										<td><button type="button" class="addBtn" data-toggle="modal" href="#Remove">Remove</button></td>
+										<td><input type="button" class="addBtn" data-toggle="modal" href="#Remove" value="Remove"></td>
 										<td style="margin-top: 10px;""><input class="addBtn" type="submit" value="Submit" name="rank_submit"></td>
+										
 										
 										<div class="modal fade" id="Remove">
 											  <div class="modal-dialog">
@@ -507,11 +508,11 @@
 												  </div>
 												  <div class="modal-footer">
 													<button type="button" class="addBtn_danger" data-dismiss="modal">No</button>
-													<input class="addBtn" type="submit" value="Yes" name="remove_submit">
+													<input class="addBtn" type="submit" value="Remove" name="remove_submit">
 												  </div>
 												</div><!-- /.modal-content -->
 											  </div><!-- /.modal-dialog -->
-											</div><!-- /.modal -->
+										</div><!-- /.modal -->
 										</form>
 										<td></td>
 										</tr>';	
