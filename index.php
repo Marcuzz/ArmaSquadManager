@@ -14,6 +14,7 @@
 	include_once('inc/FlashMessages.class.php');
 	require_once('config.php');
 	require_once('inc/database.php');
+	require_once('inc/rank_images.php');
 	$message = new FlashMessages();
 	$xml = simplexml_load_file("squad.xml");
 	if (!$xml) {
@@ -199,13 +200,6 @@
 			}
 		}
 	}
-
-	$ranks = array('Private', 'Private_2', 'Private_First_Class', 'Specialist', 'Corporal', 
-	'Sergeant', 'Staff_Sergeant', 'Sergeant_First_Class', 'Master_Sergeant', 'First_Sergeant', 
-	'Sergeant_Major', 'Command_Sergeant_Major', 'Sergeant_Major_of_the_Squad', 'Warrant_Officer', 
-	'Chief_Warrant_Officer_2','Chief_Warrant_Officer_3', 'Chief_Warrant_Officer_4', 'Chief_Warrant_Officer_5', 'Second_Lieutenant', 
-	'First_Lieutenant', 'Captain', 'Major', 'Lieutenant_Colonel', 'Colonel', 'Brigadier_General', 
-	'Major_General', 'Lieutenant_General', 'General', 'General_of_the_Squad');
 
 
 	if(isset($_POST['submit_user']) && $_POST['user_uid'] != '' && $_POST['user_password'] != ''){

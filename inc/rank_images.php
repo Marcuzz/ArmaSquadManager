@@ -39,61 +39,92 @@
 	'img/ranks/US-O10_insignia.svg.png',
 	'img/ranks/US-O11_insignia.svg');
 
-	if (strpos($members_remark, 'Private 2') === 0) {
+	$ranks = array(
+	'Private', 
+	'Private_2', 
+	'Private_First_Class', 
+	'Specialist',  
+	'Corporal', 
+	'Sergeant', 
+	'Staff_Sergeant',
+	'Sergeant_First_Class',
+	'Master_Sergeant', 
+	'First_Sergeant', 
+	'Sergeant_Major', 
+	'Command_Sergeant_Major', 
+	'Sergeant_Major_of_the_Squad', 
+	'Warrant_Officer', 
+	'Chief_Warrant_Officer_2',
+	'Chief_Warrant_Officer_3', 
+	'Chief_Warrant_Officer_4', 
+	'Chief_Warrant_Officer_5', 
+	'Second_Lieutenant', 
+	'First_Lieutenant', 
+	'Captain', 
+	'Major', 
+	'Lieutenant_Colonel', 
+	'Colonel', 
+	'Brigadier_General', 
+	'Major_General', 
+	'Lieutenant_General', 
+	'General',
+	'General_of_the_Squad');
+	
+	if (strpos($members_remark, str_replace("_", " ", $ranks[1])) === 0) {
 		$img = '<img src="'.$rank_images[1].'" width="20px" height="20px"></img>';
-	} elseif(strpos($members_remark, 'Private First Class') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[2])) === 0) {
 		$img = '<img src="'.$rank_images[2].'" width="20px" height="20px"></img>';
-	} elseif(strpos($members_remark, 'Specialist') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[3])) === 0) {
 		$img = '<img src="'.$rank_images[3].'" width="20px" height="20px"></img>';
-	} elseif(strpos($members_remark, 'Corporal') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[4])) === 0) {
 		$img = '<img src="'.$rank_images[4].'" width="20px" height="20px"></img>';
-	} elseif(strpos($members_remark, 'Sergeant') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[5])) === 0) {
 		$img = '<img src="'.$rank_images[5].'" width="20px" height="20px"></img>';
-	} elseif(strpos($members_remark, 'Staff Sergeant') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[6])) === 0) {
 		$img = '<img src="'.$rank_images[6].'" width="20px" height="20px"></img>';
-	} elseif(strpos($members_remark, 'Sergeant First Class') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[7])) === 0) {
 		$img = '<img src="'.$rank_images[7].'" width="20px" height="20px"></img>';
-	} elseif(strpos($members_remark, 'Master Sergeant') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[8])) === 0) {
 		$img = '<img src="'.$rank_images[8].'" width="20px" height="20px"></img>';
-	} elseif(strpos($members_remark, 'First Sergeant') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[9])) === 0) {
 		$img = '<img src="'.$rank_images[9].'" width="20px" height="20px"></img>';
-	} elseif(strpos($members_remark, 'Sergeant Major') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[10])) === 0) {
 		$img = '<img src="'.$rank_images[10].'" width="20px" height="20px"></img>';
-	} elseif(strpos($members_remark, 'Command Sergeant Major') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[11])) === 0) {
 		$img = '<img src="'.$rank_images[11].'" width="20px" height="20px"></img>';
-	} elseif(strpos($members_remark, 'Sergeant Major of the Squad') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[12])) === 0) {
 		$img = '<img src="'.$rank_images[12].'" width="20px" height="20px"></img>';
-	} elseif(strpos($members_remark, 'Warrant Officer') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[13])) === 0) {
 		$img = '<img src="'.$rank_images[13].'" width="20px" height="40px"></img>';
-	} elseif(strpos($members_remark, 'Chief Warrant Officer 2') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[14])) === 0) {
 		$img = '<img src="'.$rank_images[14].'" width="20px" height="40px"></img>';
-	} elseif(strpos($members_remark, 'Chief Warrant Officer 3') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[15])) === 0) {
 		$img = '<img src="'.$rank_images[15].'" width="20px" height="40px"></img>';
-	} elseif(strpos($members_remark, 'Chief Warrant Officer 4') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[16])) === 0) {
 		$img = '<img src="'.$rank_images[16].'" width="20px" height="40px"></img>';
-	} elseif(strpos($members_remark, 'Chief Warrant Officer 5') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[17])) === 0) {
 		$img = '<img src="'.$rank_images[17].'" width="20px" height="40px"></img>';
-	} elseif(strpos($members_remark, 'Second Lieutenant') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[18])) === 0) {
 		$img = '<img src="'.$rank_images[18].'" width="20px" height="40px"></img>';
-	} elseif(strpos($members_remark, 'First Lieutenant') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[19])) === 0) {
 		$img = '<img src="'.$rank_images[19].'" width="20px" height="40px"></img>';
-	} elseif(strpos($members_remark, 'Captain') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[20])) === 0) {
 		$img = '<img src="'.$rank_images[20].'" width="20px" height="40px"></img>';
-	} elseif(strpos($members_remark, 'Major') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[21])) === 0) {
 		$img = '<img src="'.$rank_images[21].'" width="20px" height="20px"></img>';
-	} elseif(strpos($members_remark, 'Lieutenant Colonel') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[22])) === 0) {
 		$img = '<img src="'.$rank_images[22].'" width="20px" height="20px"></img>';
-	} elseif(strpos($members_remark, 'Colonel') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[23])) === 0) {
 		$img = '<img src="'.$rank_images[23].'" width="46px" height="20px"></img>';
-	} elseif(strpos($members_remark, 'Brigadier General') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[24])) === 0) {
 		$img = '<img src="'.$rank_images[24].'" width="20px" height="20px"></img>';
-	} elseif(strpos($members_remark, 'Major General') === 0) {
+	} elseif(strpos($members_remark,str_replace("_", " ", $ranks[25])) === 0) {
 		$img = '<img src="'.$rank_images[25].'" width="45px" height="20px"></img>';
-	} elseif(strpos($members_remark, 'Lieutenant General') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[26])) === 0) {
 		$img = '<img src="'.$rank_images[26].'" width="55px" height="20px"></img>';
-	} elseif(strpos($members_remark, 'General of the Squad') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[28])) === 0) {
 		$img = '<img src="'.$rank_images[28].'" width="20px" height="20px"></img>';
-	} elseif(strpos($members_remark, 'General') === 0) {
+	} elseif(strpos($members_remark, str_replace("_", " ", $ranks[27])) === 0) {
 		$img = '<img src="'.$rank_images[27].'" width="70px" height="20px"></img>';
 	} else {
 		$img = '<img src="'.$rank_images[1].'" width="20px" height="20px"></img>';
