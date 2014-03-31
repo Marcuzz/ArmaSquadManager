@@ -10,65 +10,65 @@
 // And if a rank is found it will put the rank image next to their name
 
 	$rank_images = array('', 
-	'img/ranks/Army-USA-OR-02-2014.svg.png', 
-	'img/ranks/Army-USA-OR-03-2014.svg.png',
-	'img/ranks/Army-USA-OR-04b.svg.png',
-	'img/ranks/Army-USA-OR-04a.svg.png',
-	'img/ranks/Army-USA-OR-05.svg',
-	'img/ranks/Army-USA-OR-06.svg.png',
-	'img/ranks/Army-USA-OR-07.svg.png',
-	'img/ranks/Army-USA-OR-08b.svg.png',
-	'img/ranks/Army-USA-OR-08a.svg',
-	'img/ranks/Army-USA-OR-09c.svg.png',
-	'img/ranks/Army-USA-OR-09b.svg.png',
-	'img/ranks/Army-USA-OR-09a.svg.png',
-	'img/ranks/US-Army-WO1.svg',
-	'img/ranks/40px-US-Army-CW2.svg.png',
-	'img/ranks/40px-US-Army-CW3.svg.png',
-	'img/ranks/40px-US-Army-CW4.svg.png',
-	'img/ranks/40px-US-Army-CW5.svg.png',
-	'img/ranks/US-O1_insignia.svg.png',
-	'img/ranks/First_Lieutenant_insignia.png',
-	'img/ranks/534px-US-O3_insignia.svg.png',
-	'img/ranks/Major_insignia.png',
-	'img/ranks/Lieutenant_Colonel_insignia.png',
-	'img/ranks/Colonel_insignia.png',
-	'img/ranks/US-O7_insignia.svg.png',
-	'img/ranks/US-O8_insignia.svg.png',
-	'img/ranks/US-O9_insignia.svg.png',
-	'img/ranks/US-O10_insignia.svg.png',
-	'img/ranks/US-O11_insignia.svg');
+	'img/ranks/Army-USA-OR-02-2014.svg.png', // 2
+	'img/ranks/Army-USA-OR-03-2014.svg.png', // 3
+	'img/ranks/Army-USA-OR-04b.svg.png', // 4
+	'img/ranks/Army-USA-OR-04a.svg.png', // 5
+	'img/ranks/Army-USA-OR-05.svg', // 6
+	'img/ranks/Army-USA-OR-06.svg.png', // 7
+	'img/ranks/Army-USA-OR-07.svg.png', // 8
+	'img/ranks/Army-USA-OR-08b.svg.png', // 9
+	'img/ranks/Army-USA-OR-08a.svg', // 10
+	'img/ranks/Army-USA-OR-09c.svg.png', // 11
+	'img/ranks/Army-USA-OR-09b.svg.png', // 12
+	'img/ranks/Army-USA-OR-09a.svg.png', // 13
+	'img/ranks/US-Army-WO1.svg', // 14
+	'img/ranks/40px-US-Army-CW2.svg.png', // 15
+	'img/ranks/40px-US-Army-CW3.svg.png', // 16
+	'img/ranks/40px-US-Army-CW4.svg.png', // 17
+	'img/ranks/40px-US-Army-CW5.svg.png', // 18
+	'img/ranks/US-O1_insignia.svg.png', // 19
+	'img/ranks/First_Lieutenant_insignia.png', // 20
+	'img/ranks/534px-US-O3_insignia.svg.png', // 21
+	'img/ranks/Major_insignia.png', // 22
+	'img/ranks/Lieutenant_Colonel_insignia.png', // 23
+	'img/ranks/Colonel_insignia.png', // 24
+	'img/ranks/US-O7_insignia.svg.png', // 25
+	'img/ranks/US-O8_insignia.svg.png', // 26
+	'img/ranks/US-O9_insignia.svg.png', // 27
+	'img/ranks/US-O10_insignia.svg.png', // 28
+	'img/ranks/US-O11_insignia.svg'); // 29
 
 	$ranks = array(
-	'Private', 
-	'Private_2', 
-	'Private_First_Class', 
-	'Specialist',  
-	'Corporal', 
-	'Sergeant', 
-	'Staff_Sergeant',
-	'Sergeant_First_Class',
-	'Master_Sergeant', 
-	'First_Sergeant', 
-	'Sergeant_Major', 
-	'Command_Sergeant_Major', 
-	'Sergeant_Major_of_the_Squad', 
-	'Warrant_Officer', 
-	'Chief_Warrant_Officer_2',
-	'Chief_Warrant_Officer_3', 
-	'Chief_Warrant_Officer_4', 
-	'Chief_Warrant_Officer_5', 
-	'Second_Lieutenant', 
-	'First_Lieutenant', 
-	'Captain', 
-	'Major', 
-	'Lieutenant_Colonel', 
-	'Colonel', 
-	'Brigadier_General', 
-	'Major_General', 
-	'Lieutenant_General', 
-	'General',
-	'General_of_the_Squad');
+	'Private', // 1
+	'Private_2', // 2
+	'Private_First_Class', // 3
+	'Specialist', // 4
+	'Corporal', // 5
+	'Sergeant', // 6
+	'Staff_Sergeant', // 7
+	'Sergeant_First_Class', // 8
+	'Master_Sergeant', // 9
+	'First_Sergeant', // 10
+	'Sergeant_Major', // 11
+	'Command_Sergeant_Major', // 12
+	'Sergeant_Major_of_the_Squad', // 13 
+	'Warrant_Officer', // 14
+	'Chief_Warrant_Officer_2', // 15
+	'Chief_Warrant_Officer_3', // 16 
+	'Chief_Warrant_Officer_4', // 17
+	'Chief_Warrant_Officer_5', // 18
+	'Second_Lieutenant', // 19
+	'First_Lieutenant', // 20
+	'Captain', // 21
+	'Major', // 22
+	'Lieutenant_Colonel', // 23
+	'Colonel', // 24
+	'Brigadier_General', // 25
+	'Major_General', // 26
+	'Lieutenant_General', // 27
+	'General', // 28
+	'General_of_the_Squad');  // 29
 	
 	if (strpos($members_remark, str_replace("_", " ", $ranks[1])) === 0) {
 		$img = '<img src="'.$rank_images[1].'" width="20px" height="20px"></img>';
