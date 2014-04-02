@@ -42,7 +42,7 @@
 	width: 100%;
 }
 
-.addBtn{
+.addBtn_success{
 	width: 100px;
 	height: 35px;
 	background-color: #53bf6b;
@@ -53,10 +53,23 @@
 	margin-top: 5px;
 }
 
-.addBtn_danger{
-	width: 66px;
+.addBtn{
+	width: 100px;
 	height: 35px;
-	background-color: #ff3000;
+	background-color: #d9d9d9;
+	font-weight: bold;
+	border: none;
+	color: #000;
+	margin-left: 1px;
+	margin-top: 5px;
+	border: 1px solid #eaeaea;
+	background-image: linear-gradient(#fff, #fafafa);
+}
+
+.addBtn_danger{
+	width: 100px;
+	height: 35px;
+	background-color: #ff2900;
 	font-weight: bold;
 	border: none;
 	color: #fff;
