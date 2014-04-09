@@ -486,7 +486,7 @@
 										<td></td>
 										<input type="hidden" name="remove_hidden" value="'. $members_uid .'">
 										<input type="hidden" name="remove_hidden2" value="'. $members_name .'">
-										<td><input type="button" class="addBtn_danger" data-toggle="modal" href="#Remove" value="Remove"></td>
+										<td><input class="addBtn_danger" type="submit" value="Remove" name="remove_submit"></td>
 										<td style="margin-top: 10px;""><input class="addBtn_success" type="submit" value="Submit" name="rank_submit"></td>
 										
 										
