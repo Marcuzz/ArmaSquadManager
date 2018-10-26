@@ -1,4 +1,5 @@
 <?php
+
 ////////////////////////////////////////////////////////////////////////////////////
 //                                                                                
 // Code made by Marcuz,                             
@@ -6,10 +7,9 @@
 //                                                                                
 ////////////////////////////////////////////////////////////////////////////////////
 
-// This file might be messy and unexplainable, pending cleanup but hey, it works?
-
 	$_SESSION['loggedin'] = 'false';
 	$_SESSION['loggedin_user'] = 'false';
+	
 	SESSION_START();
 	include_once('inc/FlashMessages.class.php');
 	require_once('config.php');
@@ -17,6 +17,7 @@
 	require_once('inc/rank_images.php');
 	$message = new FlashMessages();
 	$xml = simplexml_load_file("squad.xml");
+	
 	if (!$xml) {
 		die('Couldn\'t find squad.xml!');
 	}
@@ -24,33 +25,39 @@
 	if(isset($_POST['squad_submit'])){
 		if(count($xml)){
 		   	$result = $xml->xpath("//squad");
+			
 		   	foreach($result as $squad_info){
-		   		$dom=dom_import_simplexml($squad_info);	
+		   		$dom = dom_import_simplexml($squad_info);	
+				
 		   		if($_POST['squad_tag'] != ''){
 		   			$squad_info['nick'] = $_POST['squad_tag'];
 		   		} elseif ($_POST['squad_tag'] == ''){
 		   			$squad_info['nick'] = $squad_info['nick'];
 		   		}
-		   		if($_POST['squad_name'] != ''){
+				
+		   		if($_POST['squad_name'] !== ''){
 		   			$squad_info->name = $_POST['squad_name'];
 					$squad_info->title = $_POST['squad_name'];
-		   		} elseif ($_POST['squad_name'] == ''){
+		   		} elseif ($_POST['squad_name'] === ''){
 		   			$squad_info->name = $squad_info->name;
 					$squad_info->title = $squad_info->name;
 		   		}
-		   		if($_POST['squad_email'] != ''){
+				
+		   		if($_POST['squad_email'] !== ''){
 		   			$squad_info->email = $_POST['squad_email'];
-		   		} elseif ($_POST['squad_email'] == ''){
+		   		} elseif ($_POST['squad_email'] === ''){
 		   			$squad_info->email = $squad_info->email;
 		   		}
-		   		if($_POST['squad_web'] != ''){
+				
+		   		if($_POST['squad_web'] !== ''){
 		   			$squad_info->web = $_POST['squad_web'];
-		   		} elseif ($_POST['squad_web'] == ''){
+		   		} elseif ($_POST['squad_web'] === ''){
 		   			$squad_info->web = $squad_info->web;
 		   		}
-		   		if($_POST['squad_picture'] != ''){
+				
+		   		if($_POST['squad_picture'] !== ''){
 		   			$squad_info->picture = $_POST['squad_picture'];
-		   		} elseif ($_POST['squad_picture'] == ''){
+		   		} elseif ($_POST['squad_picture'] === ''){
 		   			$squad_info->picture = $squad_info->picture;
 		   		}
 
@@ -58,7 +65,6 @@
 				$dom->preserveWhiteSpace = false;
 				$dom->formatOutput = true;
 				$dom->loadXML($xml->asXML());
-				//echo $dom->saveXML();
 				$dom->save('squad.xml');
 		   	}
 		}
@@ -76,25 +82,35 @@
 		$message->add('danger', "Email can't exceed 30 characters!");
 	} elseif(isset($_POST['submit']) && $_POST['addInput_Password'] == NULL){
 		$message->add('danger', "You need to enter a password!");
-	}elseif (isset($_POST['submit'])){
+	} elseif (isset($_POST['submit'])){
 		$UID = $_POST['addInput_UID'];
 		$IGN = $_POST['addInput_IGN'];
 		$PASS = md5($_POST['addInput_Password']);
+		
 		if(isset($_POST['addInput_Name'])){
 			$Name = $_POST['addInput_Name'];
-		} if($_POST['addInput_Name'] == NULL) {
+		} 
+		
+		if($_POST['addInput_Name'] == NULL) {
 			$Name = 'N/A';
 		}
+		
 		if(isset($_POST['addInput_Email'])){
 			$Email = $_POST['addInput_Email'];
-		} if($_POST['addInput_Email'] == NULL) {
+		} 
+		
+		if($_POST['addInput_Email'] == NULL) {
 			$Email = 'N/A';
 		}
+		
 		if(isset($_POST['addInput_ICQ'])){
 			$ICQ = $_POST['addInput_ICQ'];
-		} if($_POST['addInput_ICQ'] == NULL) {
+		} 
+		
+		if($_POST['addInput_ICQ'] == NULL) {
 			$ICQ = 'N/A';
 		}
+		
 		if($_POST['addInput_Remark'] != '' && $enable_ranks == "true"){
 			$Remark = str_replace("_", " ", $ranks[0]) . " - " . $_POST['addInput_Remark'];
 		} elseif($_POST['addInput_Remark'] == '' && $enable_ranks == "true") {
@@ -111,12 +127,11 @@
 		$member->addChild('name', $Name);
 		$member->addChild('email', $Email);
 		$member->addChild('icq', $ICQ);
+		
+		$member->addChild('remark', str_replace("_", " ", $ranks[0]));
 		if($enable_remark == 'true'){
 			$member->addChild('remark', $Remark);
-		} else {
-			$member->addChild('remark', str_replace("_", " ", $ranks[0]));
 		}
-		//$xml->asXML('squad.xml');
 
 		$dom = new DOMDocument("1.0");
 		$dom->preserveWhiteSpace = false;
@@ -143,7 +158,7 @@
 
 	if(isset($_POST['remove_submit'])){
 		foreach($xml as $seg){
-			if($seg['id'] == $_POST['remove_hidden'] && $seg['nick'] == $_POST['remove_hidden2']){
+			if($seg['id'] === $_POST['remove_hidden'] && $seg['nick'] === $_POST['remove_hidden2']){
 				$remove_UID = $_POST['remove_hidden'];
 				$remove_NICK = $_POST['remove_hidden2'];
 
@@ -154,7 +169,6 @@
 				$dom->preserveWhiteSpace = false;
 				$dom->formatOutput = true;
 				$dom->loadXML($xml->asXML());
-				//echo $dom->saveXML();
 				$dom->save('squad.xml');
 
 				mysqli_query($db, "DELETE FROM squad WHERE PID = '$remove_UID' AND Nick = '$remove_NICK'");
@@ -164,14 +178,14 @@
 
 	if(isset($_POST['rank_submit']) && isset($_POST['rank_select']) && isset($_POST['rank_speciality'])){
 		foreach($xml as $seg){
-			if($seg['id'] == $_POST['select_hidden']){
-				$dom=dom_import_simplexml($seg);
+			if($seg['id'] === $_POST['select_hidden']){
+				$dom = dom_import_simplexml($seg);
 				$newrank = str_replace("_", " ", $_POST['rank_select']);
 				$speciality = " - " . $_POST['rank_speciality'];
-				if($speciality != ' - '){
+				
+				$new_rank = $newrank;
+				if($speciality !== ' - '){
 					$new_rank = $newrank . $speciality;
-				} else {
-					$new_rank = $newrank;
 				}
 				$seg->remark = $new_rank;
 
@@ -179,30 +193,29 @@
 				$dom->preserveWhiteSpace = false;
 				$dom->formatOutput = true;
 				$dom->loadXML($xml->asXML());
-				//echo $dom->saveXML();
 				$dom->save('squad.xml');
 			}
 		}
 	} elseif(isset($_POST['rank_submit']) && isset($_POST['rank_speciality'])){
 		foreach($xml as $seg){
-			if($seg['id'] == $_POST['select_hidden']){
-				$dom=dom_import_simplexml($seg);
+			if($seg['id'] === $_POST['select_hidden']){
+				$dom = dom_import_simplexml($seg);
 				$newrank = str_replace("_", " ", $_POST['rank_select']);
-				$speciality =$_POST['rank_speciality'];
+				$speciality = $_POST['rank_speciality'];
 				$seg->remark = $speciality;
 
 			 	$dom = new DOMDocument("1.0");
 				$dom->preserveWhiteSpace = false;
 				$dom->formatOutput = true;
 				$dom->loadXML($xml->asXML());
-				//echo $dom->saveXML();
+		
 				$dom->save('squad.xml');
 			}
 		}
 	}
 
 
-	if(isset($_POST['submit_user']) && $_POST['user_uid'] != '' && $_POST['user_password'] != ''){
+	if(isset($_POST['submit_user']) && $_POST['user_uid'] !== '' && $_POST['user_password'] !== ''){
 		$user_password = md5($_POST['user_password']); ;
 		$user_pid = $_POST['user_uid'];
 
@@ -222,21 +235,23 @@
 
 	if(isset($_POST['save_user'])){
 		foreach($xml as $seg){
-			if($seg['id'] == $_SESSION['loggedin_user']){
-				$dom=dom_import_simplexml($seg);
+			if($seg['id'] === $_SESSION['loggedin_user']){
+				$dom = dom_import_simplexml($seg);
 				$speciality = $_POST['rank_speciality'];
+				
+				$user_name = $seg['nick'];
 				if($_POST['user_name'] != ''){
 					$user_name = $_POST['user_name'];
 					$PID = $seg['id'];
 					mysqli_query($db, "UPDATE squad SET Nick = '$user_name' WHERE PID = '$PID'");
-				} else {
-					$user_name = $seg['nick'];
 				}
+				
+				$user_im = $seg->icq;
 				if($_POST['user_im'] != ''){
 					$user_im = $_POST['user_im'];
-				} else {
-					$user_im = $seg->icq;
 				}
+				
+				$user_remark = $seg->remark;
 				if($_POST['user_remark'] != '' && $enable_ranks == 'true' && strpos($_POST['user_remark'], '-') === false){
 					$str = $seg->remark;
 					$str = substr($str,0,strrpos($str, '-'));
@@ -245,9 +260,8 @@
 					$message->add('danger', 'Your remark can not contain dashes!');
 				} elseif($_POST['user_remark'] != '' && $enable_ranks != 'true') {
 					$user_remark = $_POST['user_remark'];
-				} else {
-					$user_remark = $seg->remark;
 				}
+				
 				$seg['nick'] = $user_name;
 				$seg->icq = $user_im;
 				$seg->remark = $user_remark;
@@ -256,7 +270,6 @@
 				$dom->preserveWhiteSpace = false;
 				$dom->formatOutput = true;
 				$dom->loadXML($xml->asXML());
-				//echo $dom->saveXML();
 				$dom->save('squad.xml');
 			}
 		}
@@ -290,14 +303,17 @@
 				<div class="header_logo">
 					Squad Logo
 				</div>
+				
 				<div class="logo_bg">
 					<div class="logo">
 						<img src="<?php echo $image_url; ?>" width="200px" height="200px"></img>
 					</div>
 				</div>
+				
 				<div class="header_left">
 					Squad Information
 				</div>
+				
 				<div class="box">
 					<form name="squad_form" method="POST">
 					<?php 	
@@ -329,9 +345,11 @@
 					?>
 					</form>
 				</div>
+				
 				<div class="header_left">
 					Squad Registration form
 				</div>
+				
 				<div class="box">
 					<?php if(isset($_POST['submit'])){ $message->display(); } ?>
 					<form name="regform" method="POST">
@@ -364,6 +382,7 @@
 					}
 					?>
 				</div>
+				
 				<div class="box">
 					<?php if(isset($_POST['submit_user']) or $_POST['save_user']){ $message->display(); } ?>
 					<form name="userform" method="POST"> 
@@ -382,9 +401,11 @@
 					<?php }?>
 					</form>
 				</div>
+				
 				<div class="header_left">
 					Administrator Login
 				</div>
+				
 				<div class="box">
 					<?php if(isset($_POST['submit_admin'])){ $message->display(); } ?>
 					<?php if(!$_SESSION['loggedin']){ ?>
@@ -399,16 +420,19 @@
 					</form>
 					<?php } ?>
 				</div>
+				
 				<div class="squad_footer">
 					&copy; Marcuz
 				</div>
 			</div>
 		</div>
+		
 		<div class="col-lg-8">
 			<div class="squad_box">
 				<div class="header_squad">
 					Squad Members
 				</div>
+				
 				<div class="squad_content">
 					<table class="table-custom table-striped-custom" width="100%">
 						<thead>
@@ -429,6 +453,7 @@
 							}
 							?>
 						</thead>
+						
 						<tbody>
 							<?php
 								foreach($ranks as $rankslist) {
